@@ -1,21 +1,65 @@
-@tailwind base;
-
-a {
-  @apply text-blue-700;
+/* Asap */
+@font-face {
+  font-family: var(--font-asap)
 }
 
-a:hover {
-  @apply border-b-2 border-blue-700;
+/* Open Sans */
+
+@font-face {
+  font-family: var(--font-k2d)
 }
 
-@tailwind components;
-
-@tailwind utilities;
-
-.content p {
-  @apply my-6;
+/* Style */
+html {
+  scroll-behavior: smooth;
+  font-size: 15px;
+  overflow-x: hidden;
 }
 
-.content ul {
-  @apply my-6;
+@media (max-width: 900px) {
+  html {
+      font-size: 14px;
+  }
+}
+
+@media (max-width: 550px) {
+  html {
+      font-size: 12px;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  background: #ffd526;
+}
+
+::selection {
+  background: #ffd526;
+}
+
+.MuiInputLabel-root {
+  color: #000;
+}
+
+/* RD STATION FORM  */
+
+#form-1-drop-site-accc019797d4d17a0e9c h1,
+#form-1-drop-site-accc019797d4d17a0e9c button,
+#form-1-drop-site-accc019797d4d17a0e9c input,
+#form-1-drop-site-accc019797d4d17a0e9c strong {
+  transition: all 0.2s ease;
+  font-family: "Asap Regular" !important;
+}
+
+#form-1-drop-site-accc019797d4d17a0e9c input {
+  outline: none !important;
+}
+
+#form-1-drop-site-accc019797d4d17a0e9c button:hover {
+  color: #fff;
 }
