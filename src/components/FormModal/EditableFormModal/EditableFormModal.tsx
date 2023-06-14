@@ -91,7 +91,7 @@ const EditableFormModal: FC<Props> = (props) => {
       <Grid item xs={upToLaptop ? 4 : 12}>
         <Stack spacing={2}>
           <Box>
-            <Image src={Logo} width={250} alt="Logo Agger" />
+            <Image src={Logo} priority width={250} alt="Logo Agger" />
           </Box>
           {props.contrateFormEditableForm.descriptions.map((description) => {
             return (

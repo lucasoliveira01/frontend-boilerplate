@@ -3,7 +3,7 @@ import { createStyled } from '@mui/system';
 import type { InternalAxiosRequestConfig } from 'axios';
 import axios from 'axios';
 import type { RefObject } from 'react';
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import type { TextContent } from '../types/aggerTypes';
 import AggerTheme from './AggerTheme';
@@ -35,7 +35,7 @@ backendHttp.interceptors.request.use(
 
 export function useWindowSize() {
   const [size, setSize] = useState([0, 0]);
-  useLayoutEffect(() => {
+  useEffect(() => {
     function updateSize() {
       setSize([window.innerWidth, window.innerHeight]);
     }
@@ -100,11 +100,13 @@ export const createStyledAggerTheme = () => {
   return createStyled({ defaultTheme: AggerTheme });
 };
 
-export const getHtmlInnerText = () => {
+export const getHtmlInnerText = (html: string) => {
+  if (process.browser) {
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    return div.textContent || div.innerText || '';
+  }
   return '';
-  // const div = document.createElement('div');
-  // div.innerHTML = html;
-  // return div.textContent || div.innerText || '';
 };
 
 export const stringWithRepeatedCharacters = (string: string) => {

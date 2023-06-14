@@ -32,7 +32,7 @@ const DepoimentosSection: FC<Props> = (props) => {
 
     depoimentoContent.depoimentos.map((depoimento) => {
       slides.push(
-        <SwiperSlide key={`${depoimento.key}slide`}>
+        <SwiperSlide key={`${depoimento.key}${Math.random() * 100}`}>
           <EditableDepoimento
             key={`${depoimento.key}editableDepoimento`}
             depoimento={depoimento}

@@ -15,7 +15,7 @@ class MyDocument extends Document {
           <meta charSet="utf-8" />
           <link
             rel="icon"
-            href="%PUBLIC_URL%/flavicon-Agger.svg"
+            href="/favicon.svg"
             sizes="any"
             type="image/svg+xml"
           />
@@ -23,18 +23,13 @@ class MyDocument extends Document {
           <meta property="og:site_name" content="Agger Sistemas" />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://agger.com.br/" />
-          <meta property="og:title" content="Agger Sistemas" />
-          <meta property="og:image" content="%PUBLIC_URL%/flavicon-Agger.svg" />
-          <meta
-            property="og:description"
-            content="Agger Sistemas - Soluções para sua Corretora"
-          />
-          <link rel="apple-touch-icon" href="%PUBLIC_URL%/flavicon-Agger.svg" />
+          <meta property="og:image" content="/favicon.svg" />
+          <link rel="apple-touch-icon" href="/favicon.svg" />
           {/* <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     --> */}
-          <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+          <link rel="manifest" href="/manifest.json" />
           {/* <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -109,8 +104,6 @@ class MyDocument extends Document {
           }}
         />
         <body>
-          <noscript>You need to enable JavaScript to run this app.</noscript>
-          <div id="root" />
           {/* <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

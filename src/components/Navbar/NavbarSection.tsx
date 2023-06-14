@@ -217,7 +217,7 @@ const NavbarSection: FC<Props> = (props) => {
 
           navbarLinks.push(
             <MenuItem
-              key={`${n.key}menuItem`}
+              key={`${n.key}+${Math.random() * 100}`}
               onClick={handleCloseNavMenu}
               sx={{ paddingTop: '25px' }}
             >
@@ -236,14 +236,17 @@ const NavbarSection: FC<Props> = (props) => {
       } else if (upToLaptop) {
         navbarLinks.push(
           <StyledEditableLinkHover
-            key={`${n.key}linkHover`}
+            key={`${n.key}${Math.random() * 100}`}
             link={n}
             whiteSpace="nowrap"
           />
         );
       } else {
         navbarLinks.push(
-          <MenuItem key={`${n.key}menuItem`} onClick={handleCloseNavMenu}>
+          <MenuItem
+            key={`${n.key}${Math.random() * 100}`}
+            onClick={handleCloseNavMenu}
+          >
             <StyledEditableLink link={n} />
           </MenuItem>
         );
@@ -273,6 +276,7 @@ const NavbarSection: FC<Props> = (props) => {
             alignItems="center"
           >
             <Image
+              priority
               src={pageTop ? Logo : LogoAlternativo}
               width={150}
               alt="Aegger logo"
@@ -331,6 +335,7 @@ const NavbarSection: FC<Props> = (props) => {
           >
             <Image
               src={pageTop ? Logo : LogoAlternativo}
+              priority
               width={150}
               alt="Agger logo"
               style={{ cursor: 'pointer' }}

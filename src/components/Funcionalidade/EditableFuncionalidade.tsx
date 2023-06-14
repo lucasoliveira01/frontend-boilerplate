@@ -2,20 +2,21 @@ import type { Box } from '@mui/material';
 import Modal from '@mui/material/Modal';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
+import Image from 'next/image';
 import type { FC, ReactElement } from 'react';
 import { useState } from 'react';
 
 // ICONS
-import { ReactComponent as FuncionalidadeCelularIcon } from '../../../public/assets/images/icone-agilize-seus-calculos-pelo-celular-agger.svg';
-import { ReactComponent as FuncionalidadeCelularIconPopup } from '../../../public/assets/images/icone-agilize-seus-calculos-pelo-celular-agger-popup.svg';
-import { ReactComponent as FuncionalidadeDocumentoIcon } from '../../../public/assets/images/icone-agilize-seus-documentos-agger.svg';
-import { ReactComponent as FuncionalidadeDocumentoIconPopup } from '../../../public/assets/images/icone-agilize-seus-documentos-agger-popup.svg';
-import { ReactComponent as FuncionalidadeDocumentoEletronicoIcon } from '../../../public/assets/images/icone-assine-seus-documentos-eletronicamente-agger.svg';
-import { ReactComponent as FuncionalidadeDocumentoEletronicoIconPopup } from '../../../public/assets/images/icone-assine-seus-documentos-eletronicamente-agger-popup.svg';
-import { ReactComponent as FuncionalidadePDFIcon } from '../../../public/assets/images/icone-importe-seus-pdfs-agger.svg';
-import { ReactComponent as FuncionalidadePDFIconPopup } from '../../../public/assets/images/icone-importe-seus-pdfs-agger-popup.svg';
-import { ReactComponent as FuncionalidadeDadosClienteIcon } from '../../../public/assets/images/icone-tenha-os-dados-dos-clientes-e-da-sua-corretora-agger.svg';
-import { ReactComponent as FuncionalidadeDadosClienteIconPopup } from '../../../public/assets/images/icone-tenha-os-dados-dos-clientes-e-da-sua-corretora-agger-popup.svg';
+import FuncionalidadeCelularIcon from '../../../public/assets/images/icone-agilize-seus-calculos-pelo-celular-agger.svg';
+import FuncionalidadeCelularIconPopup from '../../../public/assets/images/icone-agilize-seus-calculos-pelo-celular-agger-popup.svg';
+import FuncionalidadeDocumentoIcon from '../../../public/assets/images/icone-agilize-seus-documentos-agger.svg';
+import FuncionalidadeDocumentoIconPopup from '../../../public/assets/images/icone-agilize-seus-documentos-agger-popup.svg';
+import FuncionalidadeDocumentoEletronicoIcon from '../../../public/assets/images/icone-assine-seus-documentos-eletronicamente-agger.svg';
+import FuncionalidadeDocumentoEletronicoIconPopup from '../../../public/assets/images/icone-assine-seus-documentos-eletronicamente-agger-popup.svg';
+import FuncionalidadePDFIcon from '../../../public/assets/images/icone-importe-seus-pdfs-agger.svg';
+import FuncionalidadePDFIconPopup from '../../../public/assets/images/icone-importe-seus-pdfs-agger-popup.svg';
+import FuncionalidadeDadosClienteIcon from '../../../public/assets/images/icone-tenha-os-dados-dos-clientes-e-da-sua-corretora-agger.svg';
+import FuncionalidadeDadosClienteIconPopup from '../../../public/assets/images/icone-tenha-os-dados-dos-clientes-e-da-sua-corretora-agger-popup.svg';
 import AggerTheme from '../../utils/AggerTheme';
 import { createStyledAggerTheme } from '../../utils/Utility';
 import { EditableButton } from '../GenericEditableContent/EditableButton';
@@ -88,7 +89,7 @@ const CenterModalBoxFuncionalidade = styled(CenterModalBox)(({ theme }) => ({
   paddingTop: theme.spacing(6),
 })) as typeof Box;
 
-export const EditableFuncionalidade: FC<FuncionalidadeProps> = (
+const EditableFuncionalidade: FC<FuncionalidadeProps> = (
   props
 ): ReactElement => {
   const [open, setOpen] = useState(false);
@@ -109,14 +110,21 @@ export const EditableFuncionalidade: FC<FuncionalidadeProps> = (
     <>
       <FuncionalidadePaper elevation={11}>
         <FuncionalidadeStack spacing={2} py={2} px={4}>
-          <DefaultIcon
+          <Image
+            alt="Icon"
+            // eslint-disable-next-line global-require
+            src={DefaultIcon}
+            width={70}
+            height={60}
+          />
+          {/* <DefaultIcon
             style={{
               width: '70px',
               minWidth: '70px',
               height: '60px',
               minHeight: '60px',
             }}
-          />
+          /> */}
           <EditableTypography text={funcionalidade.title} />
           <EditableTypography text={funcionalidade.description} />
         </FuncionalidadeStack>
@@ -144,7 +152,12 @@ export const EditableFuncionalidade: FC<FuncionalidadeProps> = (
         <CenterModalBoxFuncionalidade>
           <CloseModalIcon closeModal={closeModal} color="white" />
           <Stack spacing={2}>
-            <PopedupIcon
+            <Image
+              alt="Icon"
+              // eslint-disable-next-line global-require
+              src={PopedupIcon}
+              width={50}
+              height={50}
               style={{
                 position: 'absolute',
                 top: '-25px',
@@ -154,6 +167,16 @@ export const EditableFuncionalidade: FC<FuncionalidadeProps> = (
                 minHeight: '50px',
               }}
             />
+            {/* <PopedupIcon
+              style={{
+                position: 'absolute',
+                top: '-25px',
+                width: '50px',
+                minWidth: '50px',
+                height: '50px',
+                minHeight: '50px',
+              }}
+            /> */}
             <EditableTypography
               text={funcionalidade.title}
               sx={{

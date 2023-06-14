@@ -15,7 +15,13 @@ import type { FC } from 'react';
 import { useState } from 'react';
 import CookieConsent from 'react-cookie-consent';
 
+import ContatoSection from '@/components/Contato/ContatoSection';
+import { AppContentProvider } from '@/components/Contexts/AppContentContext';
+import DepoimentosSection from '@/components/Depoimento/DepoimentosSection';
+import FuncionalidadesSection from '@/components/Funcionalidade/FuncionalidadesSection';
+import NossasSolucoesSection from '@/components/NossasSolucoes/NossasSolucoesSection';
 import Sidebar from '@/components/Sidebar/Sidebar';
+import SobreNosSection from '@/components/SobreNos/SobreNosSection';
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
 import Theme from '@/utils/AggerTheme';
@@ -23,7 +29,6 @@ import { useWindowSize } from '@/utils/Utility';
 
 import Logo from '../../public/assets/images/logoRodape.webp';
 import Selo from '../../public/assets/images/Selo.webp';
-import { AppContentProvider } from '../components/Contexts/AppContentContext';
 import Navbar from '../components/Navbar/NavbarSection';
 import PlanosSection from '../components/Plano/PlanosSection';
 
@@ -65,10 +70,21 @@ const PageComponent: FC = () => {
       >
         <Container disableGutters maxWidth={false} sx={{ width: '100%' }}>
           <Navbar />
-
           {/** Contato section */}
+          <ContatoSection gridDefaultProps={gridContainerDefaultProps} />
 
+          {/** Sobre Nós section  */}
+          <SobreNosSection gridDefaultProps={gridContainerDefaultProps} />
+
+          {/** Depoimentos section */}
+          <DepoimentosSection gridDefaultProps={gridContainerDefaultProps} />
+
+          {/** Nossas Soluções section */}
+          <NossasSolucoesSection gridDefaultProps={gridContainerDefaultProps} />
           {/** Funcionalidades section */}
+          <FuncionalidadesSection
+            gridDefaultProps={gridContainerDefaultProps}
+          />
 
           {/** Planos section */}
           <PlanosSection gridDefaultProps={gridContainerDefaultProps} />
@@ -249,7 +265,7 @@ const Index = () => {
       meta={
         <Meta
           title="Agger Sistemas"
-          description="Há 29 anos simplificando e potencializando o trabalho do corretor de seguros Soluções em Multicálculo e Gestão."
+          description="Agger Sistemas - Soluções para sua Corretora"
         />
       }
     >

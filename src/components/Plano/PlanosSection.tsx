@@ -117,7 +117,7 @@ const PlanosSection: FC<Props> = (props) => {
                     }}
                   >
                     <EditablePlano
-                      key={`${plano.key}editablePlano`}
+                      key={`${plano.key}${Math.random() * 100}`}
                       plano={plano}
                       onSelectPlan={handleSelectPlan}
                     />
@@ -152,7 +152,7 @@ const PlanosSection: FC<Props> = (props) => {
               if (planoPrice === '0') {
                 return (
                   <ContatoButton
-                    key={`${plano.key}contatoButton`}
+                    key={`${plano.key}${Math.random() * 100}`}
                     plano={plano}
                     onSelectPlan={handleSelectPlan}
                   />

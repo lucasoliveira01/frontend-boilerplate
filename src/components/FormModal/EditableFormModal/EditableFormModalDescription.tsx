@@ -1,9 +1,10 @@
 import { Stack } from '@mui/material';
+import Image from 'next/image';
 import type { FC } from 'react';
 
-import { ReactComponent as CancelamentoIcon } from '../../../../public/assets/images/cancelamento-gratis-agger.svg';
-import { ReactComponent as PagamentoIcon } from '../../../../public/assets/images/primeiro-pagamento-para-30-dias-agger.svg';
-import { ReactComponent as FidelidadeIcon } from '../../../../public/assets/images/sem-fidelidade-agger.svg';
+import CancelamentoIcon from '../../../../public/assets/images/cancelamento-gratis-agger.svg';
+import PagamentoIcon from '../../../../public/assets/images/primeiro-pagamento-para-30-dias-agger.svg';
+import FidelidadeIcon from '../../../../public/assets/images/sem-fidelidade-agger.svg';
 import type { TextContent } from '../../../types/aggerTypes';
 import { EditableTypography } from '../../GenericEditableContent/EditableTypography';
 import { FORM_MODAL_SVG_TYPES } from '../FormModalType';
@@ -23,7 +24,9 @@ const EditableFormModalDescription: FC<Props> = (props) => {
     const Icon = SVGMap[props.description.icon as keyof typeof SVGMap];
     return (
       <Stack direction="row" spacing={1} alignItems="center">
-        <Icon
+        <Image
+          alt="Icon"
+          src={Icon}
           style={{
             width: '70px',
             minWidth: '70px',

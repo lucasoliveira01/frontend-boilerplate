@@ -35,7 +35,7 @@ import type {
   PlanoEditablePlan,
   SelectedPlanoInformation,
 } from '../../Plano/PlanoType';
-import { PLANO_HIRE_API_REFERENCE } from '../../Plano/PlanoType';
+import { PlanoHireApiReference } from '../../Plano/PlanoType';
 import { useFormModalContentContext } from '../FormModalContext';
 
 const styled = createStyledAggerTheme();
@@ -555,7 +555,7 @@ const EditableContrateFormHireAPI: FC<ContrateFormProps> = (props) => {
             site: values.website,
             recommendation: recommendationTxt,
             package: {
-              type: PLANO_HIRE_API_REFERENCE.MONTHLY,
+              type: PlanoHireApiReference.MONTHLY,
               product: props.plan.hireApiType,
               licenses: props.planSelectedLicence.licenceQuantity,
               price: parseFloat(props.planPrice.replace(',', '.')),
