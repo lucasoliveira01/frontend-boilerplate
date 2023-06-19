@@ -2,24 +2,21 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import type { GridProps } from '@mui/material';
-import {
-  Box,
-  Container,
-  Link,
-  Link as LinkIcon,
-  Stack,
-  ThemeProvider,
-} from '@mui/material';
+import { Box, Link, Stack, ThemeProvider } from '@mui/material';
+import { Container } from '@mui/system';
 import Image from 'next/image';
 import type { FC } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CookieConsent from 'react-cookie-consent';
+import { animateScroll } from 'react-scroll';
 
 import ContatoSection from '@/components/Contato/ContatoSection';
 import { AppContentProvider } from '@/components/Contexts/AppContentContext';
 import DepoimentosSection from '@/components/Depoimento/DepoimentosSection';
 import FuncionalidadesSection from '@/components/Funcionalidade/FuncionalidadesSection';
+import Navbar from '@/components/Navbar/NavbarSection';
 import NossasSolucoesSection from '@/components/NossasSolucoes/NossasSolucoesSection';
+import PlanosSection from '@/components/Plano/PlanosSection';
 import Sidebar from '@/components/Sidebar/Sidebar';
 import SobreNosSection from '@/components/SobreNos/SobreNosSection';
 import { Meta } from '@/layouts/Meta';
@@ -29,10 +26,12 @@ import { useWindowSize } from '@/utils/Utility';
 
 import Logo from '../../public/assets/images/logoRodape.webp';
 import Selo from '../../public/assets/images/Selo.webp';
-import Navbar from '../components/Navbar/NavbarSection';
-import PlanosSection from '../components/Plano/PlanosSection';
 
-const PageComponent: FC = () => {
+interface Props {
+  contrate?: boolean;
+}
+
+const PageComponent: FC<Props> = (props) => {
   const [windowsWidth] = useWindowSize();
   const [mainWidthAvaliable, setMainWidthAvaliable] = useState<number>();
   const [mainMarginLeft, setMainMarginLeft] = useState(0);
@@ -54,6 +53,20 @@ const PageComponent: FC = () => {
     maxWidth: 'desktop',
     m: 'auto',
   };
+
+  useEffect(() => {
+    if (props.contrate) {
+      const element = document.getElementById('planos_section');
+
+      if (element) {
+        const elemRect = element.getBoundingClientRect();
+        const offset = elemRect.top + elemRect.top * 0.07;
+
+        animateScroll.scrollTo(offset);
+      }
+    }
+  }, [props.contrate]);
+
   return (
     <>
       <Sidebar
@@ -70,6 +83,7 @@ const PageComponent: FC = () => {
       >
         <Container disableGutters maxWidth={false} sx={{ width: '100%' }}>
           <Navbar />
+
           {/** Contato section */}
           <ContatoSection gridDefaultProps={gridContainerDefaultProps} />
 
@@ -81,6 +95,7 @@ const PageComponent: FC = () => {
 
           {/** Nossas Soluções section */}
           <NossasSolucoesSection gridDefaultProps={gridContainerDefaultProps} />
+
           {/** Funcionalidades section */}
           <FuncionalidadesSection
             gridDefaultProps={gridContainerDefaultProps}
@@ -107,15 +122,13 @@ const PageComponent: FC = () => {
                       color: '#005b87',
                       fontWeight: 'bold',
                       margin: '0 30px 0 30px',
-                      fontFamily:
-                        'Asap Regular,Asap Medium,Asap SemiBold,Asap Bold,K2D Thin,K2D ExtraLight,K2D Light,K2D Regular,K2D SemiBold,K2D Bold,K2D ExtraBold',
                       fontSize: '20px',
                     }}
                   >
                     SIGA-NOS
                   </p>
 
-                  <LinkIcon
+                  <Link
                     href="https://www.facebook.com/aggersistemas"
                     target="_blank"
                     rel="noopener"
@@ -130,8 +143,8 @@ const PageComponent: FC = () => {
                         '&:hover': { transform: 'scale(1.1)' },
                       }}
                     />
-                  </LinkIcon>
-                  <LinkIcon
+                  </Link>
+                  <Link
                     href="https://www.linkedin.com/company/aggersistemas/?original_referer=https%3A%2F%2Fagger.com.br%2F"
                     target="_blank"
                     rel="noopener"
@@ -146,8 +159,8 @@ const PageComponent: FC = () => {
                         '&:hover': { transform: 'scale(1.1)' },
                       }}
                     />
-                  </LinkIcon>
-                  <LinkIcon
+                  </Link>
+                  <Link
                     href="https://www.instagram.com/aggersistemas/"
                     target="_blank"
                     rel="noopener"
@@ -162,7 +175,7 @@ const PageComponent: FC = () => {
                         '&:hover': { transform: 'scale(1.1)' },
                       }}
                     />
-                  </LinkIcon>
+                  </Link>
                 </Stack>
               </Box>
             </Box>
@@ -181,8 +194,6 @@ const PageComponent: FC = () => {
             style={{
               fontSize: '20px',
               color: '#005b87',
-              fontFamily:
-                'Asap Regular,Asap Medium,Asap SemiBold,Asap Bold,K2D Thin,K2D ExtraLight,K2D Light,K2D Regular,K2D SemiBold,K2D Bold,K2D ExtraBold',
             }}
             className="text-center"
           >
@@ -203,8 +214,7 @@ const PageComponent: FC = () => {
             style={{
               fontSize: '12px',
               color: '#005b87',
-              fontFamily:
-                'Asap Regular,Asap Medium,Asap SemiBold,Asap Bold,K2D Thin,K2D ExtraLight,K2D Light,K2D Regular,K2D SemiBold,K2D Bold,K2D ExtraBold',
+              fontFamily: 'inherit',
             }}
             className="text-center"
           >
@@ -219,13 +229,13 @@ const PageComponent: FC = () => {
         declineButtonText="REJEITAR"
         cookieName="cookieNotification"
         style={{
-          fontFamily: 'Asap Bold',
+          fontFamily: 'inherit',
           background: '#005B87',
           color: 'white',
           fontSize: '15px',
         }}
         buttonStyle={{
-          fontFamily: 'Asap Bold',
+          fontFamily: 'inherit',
           color: '#003050',
           fontSize: '15px',
           padding: '15px 50px',
@@ -233,7 +243,7 @@ const PageComponent: FC = () => {
           fontWeight: 'bold',
         }}
         declineButtonStyle={{
-          fontFamily: 'Asap Bold',
+          fontFamily: 'inherit',
           color: '#003050',
           fontSize: '15px',
           padding: '15px 50px',
@@ -241,18 +251,21 @@ const PageComponent: FC = () => {
           fontWeight: 'bold',
           background: '#FFD526',
         }}
+        /* onAccept={() => {
+              
+            }} */
       >
         <p style={{ fontSize: '16px' }}>
           Este site utiliza apenas cookies necessários, ou seja, aqueles sem os
           quais o site não realizará funções básicas ou operará corretamente.
           Para mais informações sobre o uso de dados pessoais, consulte nossa{' '}
-          <Link
+          <a
             href="https://aggerinstala.blob.core.windows.net/docs/Declaracao_Privacidade.pdf"
             target="_blank"
             style={{ color: 'white' }}
           >
             Declaração de Privacidade.
-          </Link>
+          </a>
         </p>
       </CookieConsent>
     </>

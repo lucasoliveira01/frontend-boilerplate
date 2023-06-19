@@ -21,9 +21,9 @@ interface Props {
 
 export const DepoimentoContentContext = createContext({
   depoimentoContent: depoimentosSkeletonContent,
-  updateDepoimentoContent: (newContent: DepoimentosContent) => {},
+  updateDepoimentoContent: (_newContent: DepoimentosContent) => {},
   addDepoimento: () => {},
-  deleteDepoimento: (index: number) => {},
+  deleteDepoimento: (_index: number) => {},
   depoimentoChanged: false,
 });
 
@@ -77,7 +77,6 @@ export const DepoimentoContentProvider: FC<Props> = (props) => {
         style: {
           color: '#fff',
           fontSize: '1.1rem',
-          fontFamily: 'Asap SemiBold',
         },
       },
       profession: {
@@ -88,7 +87,6 @@ export const DepoimentoContentProvider: FC<Props> = (props) => {
         style: {
           color: '#003050',
           fontSize: '1rem',
-          fontFamily: 'Asap Bold',
         },
       },
       deposition: {
@@ -99,7 +97,7 @@ export const DepoimentoContentProvider: FC<Props> = (props) => {
         style: {
           color: '#fff',
           fontSize: '1.1rem',
-          fontFamily: 'K2D Regular',
+          // fontFamily: 'K2D Regular',
         },
       },
     };
@@ -116,7 +114,7 @@ export const DepoimentoContentProvider: FC<Props> = (props) => {
     const newDepoimentoContent = { ...depoimentoContent };
     newDepoimentoContent.depoimentos.splice(index, 1);
     newDepoimentoContent.depoimentos.forEach(
-      (depoimento, depoimentoIndex, depoimentos) => {
+      (_depoimento, depoimentoIndex, depoimentos) => {
         if (depoimentos && depoimentoIndex) {
           // eslint-disable-next-line no-param-reassign
           depoimentos[depoimentoIndex]!.key = `Depoimento ${

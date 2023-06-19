@@ -10,13 +10,13 @@ import type { ContatoContent, ContatoEditableContent } from './ContatoType';
 
 interface Props {}
 
-const ContatoEdition: FC<Props> = (props) => {
+const ContatoEdition: FC<Props> = () => {
   const [accordionExpanded, setAccordionExpanded] = useState<string | false>(
     false
   );
 
   const handleAccordionChange =
-    (panel: string) => (event: SyntheticEvent, isExpanded: boolean) => {
+    (panel: string) => (_event: SyntheticEvent, isExpanded: boolean) => {
       setAccordionExpanded(isExpanded ? panel : false);
     };
 

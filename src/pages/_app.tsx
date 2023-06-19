@@ -1,8 +1,8 @@
 import '../styles/global.css';
 import '../styles/verticalSwiper.css';
 
-import { Asap, K2D } from '@next/font/google';
 import type { AppProps } from 'next/app';
+import { Asap, K2D } from 'next/font/google';
 import Head from 'next/head';
 
 const asap = Asap({ subsets: ['latin'] });

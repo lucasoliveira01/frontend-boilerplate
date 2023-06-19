@@ -21,7 +21,7 @@ export type PlanoContent = {
 };
 
 export type PlanoEditablePlan = {
-  type: EDITABLE_TYPES;
+  type?: EDITABLE_TYPES;
   key: string;
   hireApiType?: PlanoHireApiReference;
   title: TextContent;
@@ -33,9 +33,9 @@ export type PlanoEditablePlan = {
 };
 
 export type PlanoEditableLicence = {
-  type: EDITABLE_TYPES;
+  type?: EDITABLE_TYPES;
   key: string;
-  licenceQuantity: number;
+  licenceQuantity?: number;
   price: TextContent;
   description: string;
 };

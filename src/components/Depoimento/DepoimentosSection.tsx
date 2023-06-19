@@ -25,18 +25,14 @@ const DepoimentosSection: FC<Props> = (props) => {
   const theme = useTheme();
   const upToLaptop = useMediaQuery(theme.breakpoints.up('laptop'));
   const upToPlanoMobile = useMediaQuery(theme.breakpoints.up('planoMobile'));
-  const { depoimentoContent } = useDepoimentoContentContext();
 
-  const SlidesItems = () => {
+  const slidesItems = () => {
     const slides: ReactElement[] = [];
 
-    depoimentoContent.depoimentos.map((depoimento) => {
+    depoimentoContent.depoimentos.map((depoimento, index) => {
       slides.push(
-        <SwiperSlide key={`${depoimento.key}${Math.random() * 100}`}>
-          <EditableDepoimento
-            key={`${depoimento.key}editableDepoimento`}
-            depoimento={depoimento}
-          />
+        <SwiperSlide key={index}>
+          <EditableDepoimento key={index} depoimento={depoimento} />
         </SwiperSlide>
       );
       return true;
@@ -45,6 +41,7 @@ const DepoimentosSection: FC<Props> = (props) => {
     return slides;
   };
 
+  const { depoimentoContent } = useDepoimentoContentContext();
   const [swiperHeight, setSwiperHeight] = useState(0);
 
   useEffect(() => {
@@ -114,7 +111,7 @@ const DepoimentosSection: FC<Props> = (props) => {
             modules={[Grid, Autoplay]}
             className="depoimentos-swiper"
           >
-            {SlidesItems()}
+            {slidesItems()}
           </StyledFormikTextField>
         </MuiGrid>
         <MuiGrid

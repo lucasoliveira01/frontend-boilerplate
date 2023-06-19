@@ -9,6 +9,7 @@
     "strict": true,
     "alwaysStrict": true,
     "strictNullChecks": true,
+    "strictFunctionTypes": false,
     "noUncheckedIndexedAccess": true,
 
     "noImplicitAny": true,

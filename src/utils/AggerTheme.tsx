@@ -62,6 +62,7 @@ const Theme =
       },
     },
     typography: {
+      fontFamily: 'inherit',
       // fontFamily: [
       //   'Asap Regular',
       //   'Asap Medium',

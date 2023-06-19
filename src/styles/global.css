@@ -46,6 +46,10 @@ body {
   color: #000;
 }
 
+.MuiTypography-root, .MuiButton-root {
+  font-family: inherit;
+}
+
 /* RD STATION FORM  */
 
 #form-1-drop-site-accc019797d4d17a0e9c h1,
@@ -53,7 +57,7 @@ body {
 #form-1-drop-site-accc019797d4d17a0e9c input,
 #form-1-drop-site-accc019797d4d17a0e9c strong {
   transition: all 0.2s ease;
-  font-family: "Asap Regular" !important;
+  /* font-family: "Asap Regular" !important; */
 }
 
 #form-1-drop-site-accc019797d4d17a0e9c input {

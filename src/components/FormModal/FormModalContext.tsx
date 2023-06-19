@@ -18,7 +18,7 @@ interface Props {
 export const FormModalContentContext = createContext({
   formModalContent: formModalSkeletonContent,
   // eslint-disable-next-line unused-imports/no-unused-vars
-  updateFormModal: (arg0: FormModalContent) => {},
+  updateFormModal: (_arg0: FormModalContent) => {},
   formModalChanged: false,
   openFormModal: false,
   showFormModal: () => {},

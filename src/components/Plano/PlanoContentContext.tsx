@@ -16,11 +16,11 @@ interface Props {
 
 export const PlanoContentContext = createContext({
   planoContent: planoSkeletonContent,
-  updatePlanoContent: (arg0: PlanoContent) => {},
-  addPackageItem: (planoIndex: number) => {},
-  deletePackageItem: (planoIndex: number, packageIndex: number) => {},
-  addLicence: (planoIndex: number) => {},
-  deleteLicence: (planoIndex: number, licenceIndex: number) => {},
+  updatePlanoContent: (_arg0: PlanoContent) => {},
+  addPackageItem: (_planoIndex: number) => {},
+  deletePackageItem: (_planoIndex: number, _packageIndex: number) => {},
+  addLicence: (_planoIndex: number) => {},
+  deleteLicence: (_planoIndex: number, _licenceIndex: number) => {},
   planoChanged: false,
 });
 
@@ -56,7 +56,7 @@ export const PlanoContentProvider: FC<Props> = (props) => {
 
   const addPackageItem = (planoIndex: number) => {
     const newPlanoContent = { ...planoContent };
-    const newPackageItem = {
+    const newPackageItem: TextContent = {
       ...newPlanoContent.planos[planoIndex]!.packageItems[0],
       key: `Item Pacote ${newPlanoContent.planos[planoIndex]!.packageItems!
         .length!}`,
@@ -71,9 +71,9 @@ export const PlanoContentProvider: FC<Props> = (props) => {
   };
 
   const deletePackageItem = (planoIndex: number, packageItemIndex: number) => {
-    if (planoContent.planos[planoIndex].packageItems.length > 1) {
+    if (planoContent.planos[planoIndex]!.packageItems.length > 1) {
       const newPlanoContent = { ...planoContent };
-      newPlanoContent.planos[planoIndex].packageItems.splice(
+      newPlanoContent.planos[planoIndex]!.packageItems.splice(
         packageItemIndex,
         1
       );
@@ -84,27 +84,27 @@ export const PlanoContentProvider: FC<Props> = (props) => {
   const addLicence = (planoIndex: number) => {
     const newPlanoContent = { ...planoContent };
     const newLicence = {
-      ...newPlanoContent.planos[planoIndex].licences[0],
-      key: `Licensa ${newPlanoContent.planos[planoIndex].licences.length}`,
+      ...newPlanoContent.planos[planoIndex]!.licences[0],
+      key: `Licensa ${newPlanoContent.planos[planoIndex]!.licences.length}`,
       description: 'Nova Licença',
       price: {
-        ...newPlanoContent.planos[planoIndex].licences[0].price,
+        ...newPlanoContent.planos[planoIndex]!.licences[0]!.price,
         text: '0',
         style: {
-          ...newPlanoContent.planos[planoIndex].licences[0].price.style,
+          ...newPlanoContent.planos[planoIndex]!.licences[0]!.price.style,
         },
       },
     };
 
-    newPlanoContent.planos[planoIndex].licences.push(newLicence);
+    newPlanoContent.planos[planoIndex]!.licences.push(newLicence);
     setPlanoContent(newPlanoContent);
     setChanged(true);
   };
 
   const deleteLicence = (planoIndex: number, licenceIndex: number) => {
-    if (planoContent.planos[planoIndex].licences.length > 1) {
+    if (planoContent.planos[planoIndex]!.licences.length > 1) {
       const newPlanoContent = { ...planoContent };
-      newPlanoContent.planos[planoIndex].licences.splice(licenceIndex, 1);
+      newPlanoContent.planos[planoIndex]!.licences.splice(licenceIndex, 1);
       setChanged(true);
     }
   };

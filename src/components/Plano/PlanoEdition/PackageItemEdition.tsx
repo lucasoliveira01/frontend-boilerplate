@@ -6,6 +6,8 @@ import { IconButton, List, ListItem, ListItemText, Stack } from '@mui/material';
 import type { FC } from 'react';
 import { useState } from 'react';
 
+import Editor from '@/components/Sidebar/Ckeditor/CKEditor';
+
 import { getHtmlInnerText } from '../../../utils/Utility';
 import type { PlanoEditablePlan } from '../PlanoType';
 
@@ -85,6 +87,19 @@ const PackageItemEdition: FC<PackagesProps> = (props) => {
                   });
                 }}
               /> */}
+              <div>
+                <Editor
+                  data={item.text}
+                  onChange={(editorData) => {
+                    props.onPackageItemChange({
+                      editorData,
+                      planoIndex,
+                      type: 'packageItems',
+                      subIndex: packageIndex,
+                    });
+                  }}
+                />
+              </div>
             </ListItem>
           )}
         </>

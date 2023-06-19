@@ -74,7 +74,7 @@ const NavbarSection: FC<Props> = (props) => {
   const StyledLinkHover = styled(Link)(({ theme }) => ({
     cursor: 'pointer',
     color: pageTop ? '#666666' : `${theme.palette.primary.contrastText}`,
-    fontFamily: 'Asap Regular',
+    fontFamily: 'inherit',
     fontSize: '1.1rem',
     textDecoration: 'none',
     '&:hover': {

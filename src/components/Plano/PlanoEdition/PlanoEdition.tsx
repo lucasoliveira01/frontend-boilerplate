@@ -13,13 +13,13 @@ import PackageItemEdition from './PackageItemEdition';
 
 interface Props {}
 
-const PlanoEdition: FC<Props> = (props) => {
+const PlanoEdition: FC<Props> = () => {
   const [accordionExpanded, setAccordionExpanded] = useState<string | false>(
     false
   );
 
   const handleAccordionChange =
-    (panel: string) => (event: SyntheticEvent, isExpanded: boolean) => {
+    (panel: string) => (_event: SyntheticEvent, isExpanded: boolean) => {
       setAccordionExpanded(isExpanded ? panel : false);
     };
 
@@ -31,7 +31,7 @@ const PlanoEdition: FC<Props> = (props) => {
     addLicence,
     deleteLicence,
   } = usePlanoContentContext();
-  interface planoChangeParameter {
+  interface PlanoChangeParameter {
     editorData: string;
     planoIndex: number;
     type: string;
@@ -50,12 +50,12 @@ const PlanoEdition: FC<Props> = (props) => {
       licenceQuantity,
       licencePrice,
       licenceDescription,
-    }: planoChangeParameter) => {
+    }: PlanoChangeParameter) => {
       const newProp = { ...planoContent };
 
       if (type === 'packageItems' && typeof subIndex === 'number') {
         // ADD
-        if (subIndex === newProp.planos[planoIndex].packageItems.length) {
+        if (subIndex === newProp.planos![planoIndex]!.packageItems.length) {
           addPackageItem(planoIndex);
         }
         // DELETE
@@ -64,11 +64,11 @@ const PlanoEdition: FC<Props> = (props) => {
         }
         // PATCH
         else {
-          newProp.planos[planoIndex].packageItems[subIndex].text = editorData;
+          newProp.planos[planoIndex]!.packageItems[subIndex]!.text = editorData;
         }
       } else if (type === 'licences' && typeof subIndex === 'number') {
         // ADD
-        if (subIndex === newProp.planos[planoIndex].licences.length) {
+        if (subIndex === newProp.planos![planoIndex]!.licences.length) {
           addLicence(planoIndex);
         }
         // DELETE
@@ -78,17 +78,17 @@ const PlanoEdition: FC<Props> = (props) => {
         // PATCH
         else {
           if (licenceDescription) {
-            newProp.planos[planoIndex].licences[subIndex].description =
+            newProp.planos[planoIndex]!.licences[subIndex]!.description =
               licenceDescription;
           }
 
           if (licenceQuantity) {
-            newProp.planos[planoIndex].licences[subIndex].licenceQuantity =
+            newProp.planos[planoIndex]!.licences[subIndex]!.licenceQuantity =
               licenceQuantity;
           }
 
           if (licencePrice) {
-            newProp.planos[planoIndex].licences[subIndex].price.text =
+            newProp.planos![planoIndex]!.licences[subIndex]!.price.text =
               licencePrice;
           }
         }

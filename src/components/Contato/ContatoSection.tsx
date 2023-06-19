@@ -160,7 +160,7 @@ const ContatoSection: FC<Props> = (props) => {
         <Grid item md={6}>
           <EditableTypography
             text={contatoContent.texts[0]!}
-            sx={{ paddingBottom: '20px' }}
+            sx={{ paddingBottom: '20px', fontWeight: 'bold' }}
           />
           <EditableTypography text={contatoContent.texts[1]!} />
         </Grid>
